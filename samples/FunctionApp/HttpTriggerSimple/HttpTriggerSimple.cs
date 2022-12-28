@@ -21,6 +21,9 @@ namespace FunctionApp
             var logger = executionContext.GetLogger("FunctionApp.HttpTriggerSimple");
             logger.LogInformation("Message logged");
 
+            logger.LogWarning("Warning");
+            logger.LogError("Error");
+
             var response = req.CreateResponse(HttpStatusCode.OK);
 
             response.Headers.Add("Date", "Mon, 18 Jul 2016 16:06:00 GMT");

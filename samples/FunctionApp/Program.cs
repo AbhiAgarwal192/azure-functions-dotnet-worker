@@ -5,6 +5,7 @@ using System;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -32,6 +33,7 @@ namespace FunctionApp
                 .ConfigureServices(s =>
                 {
                     s.AddSingleton<IHttpResponderService, DefaultHttpResponderService>();
+                    s.AddSingleton<ITelemetryInitializer, TelemetrySanitizer>();
                 })
                 //</docsnippet_dependency_injection>
                 .Build();
